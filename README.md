@@ -52,6 +52,17 @@ flowchart LR
 
 **Development status:** Architecture only; executable application files and dependencies have **not** been committed. MVP entrypoint is planned as app/Home.py; implementation details, planned repository structure, time-provenance gate, deployment boundaries and future FastAPI migration are in [Architecture v2.0](docs/ARCHITECTURE.md).
 
+## Implementation blueprint v3.0 (design only)
+
+**Detailed architecture and next implementation tasks are specified; executable Python/Streamlit app code has not yet been committed.** The initial delivery is synthetic-only and cannot be used for medical diagnosis or deciding whether to delay investigation.
+
+- [Implementation Blueprint v3.0 — module boundaries, data flow, math and release acceptance](docs/IMPLEMENTATION_BLUEPRINT.md)
+- [Streamlit UI/UX specification — screens, interactions and accessibility](docs/UI_SPEC.md)
+- [Data model and automated test matrix](docs/DATA_MODEL_AND_TESTS.md)
+- [Security, privacy and release gates](docs/SECURITY_RELEASE_GATES.md)
+
+**GitHub engineering issues:** [#1 M0 skeleton](https://github.com/HyunStudio/HyunDPCR/issues/1) · [#2 M1 Signal/Guard](https://github.com/HyunStudio/HyunDPCR/issues/2) · [#3 M2 Pathway/Options](https://github.com/HyunStudio/HyunDPCR/issues/3).
+
 ## Scope and boundaries
 
 - **Initial use:** Synthetic-data research demonstration, then appropriately approved retrospective research and silent-mode evaluation.
