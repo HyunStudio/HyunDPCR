@@ -4,6 +4,16 @@
 
 > 이 문서의 모든 컴포넌트·CLI·폴더 경로는 **계획**이며 현재 실행 가능한 코드나 임상 검증된 시스템을 뜻하지 않는다. 합성 데이터 연구 데모에서 실제 환자 데이터를 처리하거나 임상 판단·검사 지연을 권고하지 않는다.
 
+## v3.0 설계 확장 문서 (2026-11-13)
+
+본 문서는 기술 아키텍처의 상위 설계(v2.0)이다. **개발 실행 명세(v3.0)**는 아래에서 관리하며, 실제 소스코드/앱은 아직 구축되지 않았다.
+
+- [IMPLEMENTATION_BLUEPRINT.md](IMPLEMENTATION_BLUEPRINT.md): Python 모듈 책임·Pydantic I/O 계약·Streamlit 실행 흐름·수학 엔진/상태전이·Go/No-Go
+- [UI_SPEC.md](UI_SPEC.md): 6개 화면 와이어프레임, 기능·경고·접근성
+- [DATA_MODEL_AND_TESTS.md](DATA_MODEL_AND_TESTS.md): ER 다이어그램, 시점 불변식, 테스트/CI 매트릭스
+- [SECURITY_RELEASE_GATES.md](SECURITY_RELEASE_GATES.md): PHI 및 캐시 경계, 위협/규제/임상 전환 게이트
+- 개발 과제: [M0 #1](https://github.com/HyunStudio/HyunDPCR/issues/1) · [M1 #2](https://github.com/HyunStudio/HyunDPCR/issues/2) · [M2 #3](https://github.com/HyunStudio/HyunDPCR/issues/3)
+
 ## 1. 핵심 결정 (ADR-001)
 
 **Phase 1:** Python 3.12+ 분석 라이브러리 + Streamlit 다중 페이지 UI + 로컬 합성 데이터. **FastAPI, React, PostgreSQL, 별도 인증 서버, 클라우드 PHI 저장소는 초기 필수 구성에서 제외**한다.
