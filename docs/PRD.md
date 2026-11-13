@@ -1,4 +1,4 @@
-# HyunDPCR — Product Requirements Document (PRD) v1.0
+# HyunDPCR — Product Requirements Document (PRD) v1.1
 
 **일자:** 2026-11-13 | **상태:** Draft / research-only | **책임:** HyunStudio | **첫 제품:** 연구자용 합성데이터 시뮬레이터
 
@@ -76,6 +76,25 @@
 - **품질:** 동일 seed/환경에서 재현성; 무효 입력/누락 날짜/역전된 시간 순서 검사; CI 단위·통합 테스트.
 - **성능:** 데모 목표치(가설): 1,000개 합성 환자 위험 타임라인 비교가 일반 노트북에서 10초 내 처리되는지 측정(모델별 추후 재설정).
 - **UX:** 결과 산출 근거/연구 상태/가정/관측된 것과 시뮬레이션을 분명하게 구분.
+
+## 6.1. 구현 기술 및 기능 수용 기준 (Architecture v2.0과 연동)
+
+**확정 MVP 구성:** Python 3.12+ + Streamlit multi-page UI + Pydantic + NumPy/pandas/SciPy + scikit-learn baseline + pytest. 합성 데이터 fixture를 먼저 사용하며 초기 실행경로는 향후 **app/Home.py**로 설계한다. API/React/운영 DB/실환자 데이터는 필수가 아니다.
+
+| ID | 구현 요구 | 완료 조건 |
+|---|---|---|
+| ENG-01 | UI와 도메인 계층 분리 | Streamlit page는 src/hyundpcr/services의 typed function만 호출. 분석 함수 내 Streamlit import 없음 |
+| ENG-02 | 합성 데이터·분석의 재현성 | 동일 seed + data/model version + parameters에서 동일 결과; 테스트 통과 |
+| ENG-03 | 시간적 데이터 누출 차단 | available_at > as_of 사건의 추가·삭제가 현재시점 결과를 바꾸지 않음 |
+| ENG-04 | 모델·데이터 출처 표시 | UI/CSV/JSON 결과에 as_of, horizon, endpoint, assumptions, run_id, research mode/경고 포함 |
+| ENG-05 | 세션·캐시 데이터 안전 | Session State에는 데모 상태만; 전역 cache에 환자별 데이터/비밀정보를 저장하지 않음 |
+| ENG-06 | 실행·테스트가 가능한 배포 | lockfile을 포함하고 clean install, pytest, Streamlit smoke test 확인 |
+| ENG-07 | 멀티페이지 UX | Overview, Patient Timeline, Risk Evolution, Validation & Audit가 MVP 우선; Pathway/Options는 P1 |
+| ENG-08 | 추가 API 전환 경계 | 향후 FastAPI route는 같은 Pydantic schema와 서비스를 호출, 현재는 HTTP 호출 불필요 |
+
+**인터페이스 계약:** 결과에는 적어도 **analysis_mode, as_of, horizon_days, outcome_definition, model_version, dataset_version, uncertainty, warnings, run_id**가 포함된다. 종단 위험 분석에 미래 정보/임상 데이터가 혼입되면 계산을 차단한다.
+
+**코드 현황:** 이 요구사항은 설계/수용기준이며 구현·임상 검증 완료를 뜻하지 않는다. 상세 도식 및 테스트는 [ARCHITECTURE v2.0](ARCHITECTURE.md)에서 관리한다.
 
 ## 7. 계산·기능 안전 규칙
 
