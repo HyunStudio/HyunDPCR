@@ -66,6 +66,16 @@
 
 **스택 확정:** Python 3.12+, Streamlit-first; 초기부터 FastAPI와 React를 병행하지 않는다. 상세 기술 구성은 [ARCHITECTURE.md](ARCHITECTURE.md) 참조.
 
+### v3.0 구현 작업 링크
+
+| 구현 순서 | GitHub Issue | 완료 기준 |
+|---|---|---|
+| M0 | [#1 Python+Streamlit skeleton](https://github.com/HyunStudio/HyunDPCR/issues/1) | 실제 실행·CI·연구 전용 배지 |
+| M1 | [#2 Signal+Guard](https://github.com/HyunStudio/HyunDPCR/issues/2) | 시간정보 누출 방지, 합성 위험 추세, 감사 |
+| M2 | [#3 Pathway+Options](https://github.com/HyunStudio/HyunDPCR/issues/3) | 가상 상태전이·VOI 가정/안전 제약 검증 |
+
+명세: [IMPLEMENTATION_BLUEPRINT.md](IMPLEMENTATION_BLUEPRINT.md), [DATA_MODEL_AND_TESTS.md](DATA_MODEL_AND_TESTS.md), [UI_SPEC.md](UI_SPEC.md). **이 표는 스프린트 계획이며 코드는 아직 구현되지 않았다.**
+
 ## 4. 사업 모델 가설
 
 | Tier | 판매 대상 | 제공 | 선행 요구 |
