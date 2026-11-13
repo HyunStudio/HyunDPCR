@@ -96,6 +96,16 @@
 
 **코드 현황:** 이 요구사항은 설계/수용기준이며 구현·임상 검증 완료를 뜻하지 않는다. 상세 도식 및 테스트는 [ARCHITECTURE v2.0](ARCHITECTURE.md)에서 관리한다.
 
+## 6.2. v3.0 실행명세 및 이슈 추적
+
+- [Implementation Blueprint v3.0](IMPLEMENTATION_BLUEPRINT.md): 개발 가능한 서비스·데이터 계약과 연구 모드별 모듈 분리.
+- [UI_SPEC](UI_SPEC.md): Streamlit 화면·접근성·수치/의학적 경고 기준.
+- [DATA_MODEL_AND_TESTS](DATA_MODEL_AND_TESTS.md): PRD ENG-01~ENG-08 및 누수/재현성/임상 안전 검증 조건.
+- [SECURITY_RELEASE_GATES](SECURITY_RELEASE_GATES.md): 법적·윤리적 승인 단계, PHI 금지, 릴리스 차단 기준.
+- **개발 순서:** [M0 issue #1](https://github.com/HyunStudio/HyunDPCR/issues/1) → [M1 issue #2](https://github.com/HyunStudio/HyunDPCR/issues/2) → [M2 issue #3](https://github.com/HyunStudio/HyunDPCR/issues/3).
+
+**현황:** 모든 구현 항목은 미완료(설계 상태)이며, 테스트·임상 성능·상용 배포 완료를 의미하지 않는다.
+
 ## 7. 계산·기능 안전 규칙
 
 - `SYNTHETIC_DEMO`는 모두 비임상적 가상 확률.
