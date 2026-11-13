@@ -33,6 +33,25 @@ HyunDPCR은 비특이적 증상으로 진료받는 **성인 환자의 범암종 
 - [Commercialisation plan & milestones (KO)](docs/ROADMAP_BUSINESS.md)
 - [Architecture, data contract & security (KO)](docs/ARCHITECTURE.md)
 
+## Technical architecture decision (2026-11-13)
+
+**MVP: Python 3.12+ + Streamlit.** The initial research app will directly call a tested, UI-independent Python package; **FastAPI, React/Next.js, PostgreSQL, and hospital integrations are not MVP requirements**. Optional scientific libraries (NumPy, SciPy, pandas, scikit-learn, and survival-analysis tools when justified) support reproducible synthetic-data experiments.
+
+~~~mermaid
+flowchart LR
+  ST["Streamlit research UI"] --> SV["Python domain services"]
+  SV --> SIG["Signal: risk timeline"]
+  SV --> PTH["Pathway: simulation"]
+  SV --> OPT["Options: value of information"]
+  SV --> GD["Guard: audit and safety"]
+  SIG --> SYN["Synthetic research data"]
+  PTH --> SYN
+  OPT --> SYN
+  GD --> REP["Watermarked research exports"]
+~~~
+
+**Development status:** Architecture only; executable application files and dependencies have **not** been committed. MVP entrypoint is planned as app/Home.py; implementation details, planned repository structure, time-provenance gate, deployment boundaries and future FastAPI migration are in [Architecture v2.0](docs/ARCHITECTURE.md).
+
 ## Scope and boundaries
 
 - **Initial use:** Synthetic-data research demonstration, then appropriately approved retrospective research and silent-mode evaluation.
