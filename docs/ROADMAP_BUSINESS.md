@@ -1,4 +1,4 @@
-# 개발·검증·사업화 로드맵 v1.0
+# 개발·검증·사업화 로드맵 v1.1
 
 **기준일:** 2026-11-13 · **기간/가격은 시장검증 전 기획 가설** · **우선순위:** 안전/데이터/수요 검증 > 알고리즘 복잡성
 
@@ -53,6 +53,18 @@
 - [ ] 데이터 이용/IRB 가능성 확보 및 개념검증 파트너 협의
 - [ ] 첫 유료 파일럿 제안/범위·보안·책임·고객 지원 구조 작성
 - [ ] go/no-go: 고객문제, 데이터, 검증, 위해, 구매 흐름 모두 점검
+
+## 3.1. Engineering MVP 구현 게이트 (2026-11 아키텍처 확정)
+
+- **M0 — 기초구조:** pyproject.toml, lockfile, src/hyundpcr/services, app/Home.py, examples/synthetic, tests, GitHub Actions. **기획 완료 / 실제 파일·CI 미구현**.
+- **M1 — Signal/Guard:** Python 입력 계약, 고정 seed 합성 타임라인, 첫 방문~재진 위험 추정, 모델·데이터 버전 감사, 연구 전용 워터마크.
+- **M2 — Pathway:** 분석엔진을 Streamlit에서 분리한 상태로 검사·의뢰·대기열 시뮬레이션. 수평선/시간 가용성 보존.
+- **M3 — Options:** 허용된 정책만 대상으로 VOI/비용·위해 시나리오. 가정 누락 시 계산 비활성화.
+- **M4 — 외부 연구/상용화 준비:** 기관 수요가 검증되면 FastAPI + 인증·감사 + 기관 승인을 받은 저장소; React·PostgreSQL은 실제 요구가 확인될 경우에만.
+
+**개발의 Definition of Done:** 새 환경에서 프로젝트 설치·pytest·Streamlit 실행 가능, 미래정보 누출 테스트 통과, 결과/내보내기 비임상 경고 누락 없음, 인터페이스는 키보드·확대·표/텍스트 요약으로 접근 가능.
+
+**스택 확정:** Python 3.12+, Streamlit-first; 초기부터 FastAPI와 React를 병행하지 않는다. 상세 기술 구성은 [ARCHITECTURE.md](ARCHITECTURE.md) 참조.
 
 ## 4. 사업 모델 가설
 
